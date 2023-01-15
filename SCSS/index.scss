@@ -1,0 +1,58 @@
+// IMPORTACIONES
+
+// DECLARACION VARIABLES
+$fondoHeader: linear-gradient(0deg, rgba(88,58,117,1) 16%, rgba(43,67,143,1) 40%);
+$fondoFooter: linear-gradient(180deg, rgba(88, 58, 117, 1) 33%, rgba(43, 67, 143, 1) 62%);
+
+// GENERALES
+
+// HEADER
+header {
+    background: $fondoHeader;
+    height: 30vh;
+}
+
+// MAIN
+main {
+
+    >#cargando {
+        // display: none;
+        height: 50vh;
+        background: #fff url(../IMG/cargando.gif) center center/contain no-repeat;
+    }
+
+    #lista-User{
+        >li{
+            width: 70%;
+
+        }
+    }
+
+    >#tabla-contenido {
+        >.border border-secondary border-3 rounded{
+            background: #fff url(../IMG/pepe-avatar.jpg) center center/contain no-repeat;
+        }
+    }
+
+    // >#btn-mostrarMas {}
+}
+
+// MODAL
+#cargando-form-agregar{
+    width: 200px;
+    height: 200px;
+    background: #fff url(../IMG/cargando.gif) center center/contain no-repeat;
+}
+
+#cargando-form-editar{
+    width: 200px;
+    height: 200px;
+    background: #fff url(../IMG/cargando.gif) center center/contain no-repeat;
+}
+
+// FOOTER
+@import "footerOsman";
+
+footer {
+    background: $fondoFooter;
+}

@@ -1,0 +1,17 @@
+// FOOTER
+footer {
+    padding: 0;
+    margin: 0;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+
+    div {
+        background: url(../IMG/OS-SE.gif) center center/cover no-repeat;
+        margin-right: 6%;
+        width: 120px;
+        height: 120px;
+    }
+}

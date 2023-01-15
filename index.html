@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <title>Consultor de Users de la API-REST reqres.in</title>
+</head>
+
+<!-- UTILIZAR LA EXTENSION: "LIVE SERVER" PARA PODER UTILIZAR LA API -->
+
+<body>
+    <header>
+        <nav class="navbar d-flex flex-row justify-content-evenly">
+            <a class="navbar-brand border-bottom pb-5" href="#">
+                <img src="./IMG/reqres -logo.png" alt="reqres Logo" width="300">
+            </a>
+            <!-- Button trigger modal AGREGAR -->
+            <button id="btn-agregar" type="button" class="btn btn-light fs-4" data-bs-toggle="modal"
+                data-bs-target="#agregarModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                    <path
+                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path
+                        d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" />
+                </svg>
+                AGREGAR
+            </button>
+        </nav>
+    </header>
+    <main>
+        <div id="cargando"></div>
+        <div id="tabla-contenido" class="mx-5">
+            <!-- TABLA DONDE SE MUESTRA EL CONTENIDO DEL API -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Avatar</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                </tbody>
+            </table>
+            <div id="barra-inferior" class="d-flex justify-content-between my-3">
+                <button id="btn-mostrarMas" type="button" class="btn btn-info ps-2">Mostrar mas...</button>
+                <p class="pe-2">Total de Users registrados: <strong><span id="mostarTotalUsers"></span></strong></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div></div>
+    </footer>
+
+    <!-- Modal AGREGAR -->
+    <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="agregarModalTitulo">Agregar nuevo usuario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cargando-form-agregar"></div>
+                    <form id="formularioAgregar" name="formAgregar">
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="emailAgregar" name="inputEmailAgregar"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie
+                                más.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreAgregar" name="inputNombreAgregar"
+                                aria-describedby="nameHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputApellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellidoAgregar" name="inputApellidoAgregar"
+                                aria-describedby="lastName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Ingrese URL de la imagen de avatar</label>
+                            <input class="form-control" type="url" id="avatarAgregar" name="inputAvatarAgregar">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p id="enviarMensaje" class="form-text" style="color: red;"></p>
+                    <button id="btn-enviarAgregar" type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN Modal AGREGAR -->
+
+    <!-- Modal EDITAR -->
+    <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editarModalTitulo">Editar usuario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cargando-form-editar"></div>
+                    <form id="formEditar">
+                        <div class="mb-4">
+                            <label for="inputEmailEditar" class="form-label">Correo actual: <strong
+                                    id="mostrarEmailEditar"></strong></label><br>
+                            <label for="inputEmailEditar" class="form-label fs-6 fst-italic">Cambiar por:</label>
+                            <input type="email" class="form-control" id="inputEmailEditar" name="inputEmailEditar"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie
+                                más.
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="inputNombreEditar" class="form-label">Nombre actual: <strong
+                                    id="mostrarNombreEditar"></strong></label><br>
+                            <label for="inputNombreEditar" class="form-label fs-6 fst-italic">Cambiar por:</label>
+                            <input type="text" class="form-control" id="inputNombreEditar" name="inputNombreEditar"
+                                aria-describedby="nameHelp">
+                        </div>
+                        <div class="mb-4">
+                            <label for="inputApellidoEditar" class="form-label">Apellido actual: <strong
+                                    id="mostrarApellidoEditar"></strong></label><br>
+                            <label for="inputApellidoEditar" class="form-label fs-6 fst-italic">Cambiar por:</label>
+                            <input type="text" class="form-control" id="inputApellidoEditar" name="inputApellidoEditar"
+                                aria-describedby="lastName">
+                        </div>
+                        <div class="mb-4">
+                            <label for="inputAvatarEditar" class="form-label">Avatar actual:</label><br>
+                            <img id="mostrarAvatarEditar" src="" width="100" height="100"><br>
+                            <label for="formFileEditar" class="form-label fs-6 fst-italic">Ingrese URL nuevo
+                                avatar:</label>
+                            <input class="form-control" type="url" id="inputAvatarEditar" name="inputAvatarEditar">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p id="enviarMensajeEditar" class="form-text" style="color: red;"></p>
+                    <button id="btn-guardar" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN Modal EDITAR -->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./JQ/jquery-3.6.1.min.js"></script>
+    <script src="./JS/funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

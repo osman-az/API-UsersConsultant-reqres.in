@@ -1,0 +1,44 @@
+header {
+  background: linear-gradient(0deg, rgb(88, 58, 117) 16%, rgb(43, 67, 143) 40%);
+  height: 30vh;
+}
+
+main > #cargando {
+  height: 50vh;
+  background: #fff url(../IMG/cargando.gif) center center/contain no-repeat;
+}
+main #lista-User > li {
+  width: 70%;
+}
+
+#cargando-form-agregar {
+  width: 200px;
+  height: 200px;
+  background: #fff url(../IMG/cargando.gif) center center/contain no-repeat;
+}
+
+#cargando-form-editar {
+  width: 200px;
+  height: 200px;
+  background: #fff url(../IMG/cargando.gif) center center/contain no-repeat;
+}
+
+footer {
+  padding: 0;
+  margin: 0;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+footer div {
+  background: url(../IMG/OS-SE.gif) center center/cover no-repeat;
+  margin-right: 6%;
+  width: 120px;
+  height: 120px;
+}
+
+footer {
+  background: linear-gradient(180deg, rgb(88, 58, 117) 33%, rgb(43, 67, 143) 62%);
+}/*# sourceMappingURL=index.css.map */
