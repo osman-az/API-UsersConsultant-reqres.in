@@ -15,3 +15,14 @@ Using the **API-Rest** from the website [reqres.in](https://reqres.in/)  which c
 4. By clicking on the ***"Save"*** button, a call is made to the **API** to update the user's data (Update of a resource). Upon arrival of the **API** response, display a success or error message depending on the response.
 
 5. Next to each user, a button or link that allows you to delete that *"user"* (Delete a resource using its unique identifier). It is programmed that when clicking on that button, it will call the API to delete that *"user"*. If the response is successful, that user is removed from the list (a loading image will be displayed while the response arrives).
+
+### Technologies:
+                    
+| ![Javascript](https://i.imgur.com/VLepSKY.png "Javascript") Javascript | ![HTML 5](https://i.imgur.com/QmbHEsR.png "HTML 5") HTML 5 | ![CSS 3](https://i.imgur.com/O6lJ8iB.png "CSS 3") CSS 3
+| ------------- | ------------- | ------------- |
+
+| ![Bootstrap](https://i.imgur.com/7XKsCWc.png "Bootstrap") Bootstrap | ![jQuery](https://i.imgur.com/EUYnMSA.png "jQuery") jQuery | ![SASS](https://i.imgur.com/VQyrdlo.png "SASS") SASS
+| ------------- | ------------- | ------------- |
+
+| ![Fetch](https://i.imgur.com/Cihg5Mu.png "Fetch") | ![SweetAlert](https://i.imgur.com/SgnATuV.png "SweetAlert")
+| ------------- | ------------- |
